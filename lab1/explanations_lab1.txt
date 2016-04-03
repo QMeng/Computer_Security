@@ -1,0 +1,23 @@
+#Chuanrui Li, 1000010846, chuanrui.li@mail.utoronto.ca
+#Jing Wang, 1002093183, jimmmy.wang@mail.utoronto.ca
+
+1, target1 
+   problem: The strcpy function has buffer overflow problem. we can overwrite the return address.
+   solution: attacker-string is: SHELLCODE(45bytes) + NOP(75bytes) + return address(4bytes). When the stack copies the return address from attacker-string, the program comes back to the starting point of shell code and start running the shell code.
+
+
+2, target2
+   problem: We can overwrite the for loop boundary points for both i and length in foo function, then stack pointer will hit return address and we can use env variable to overwrite return address at the same time
+
+   solution: attacker-string is: SHELLCODE(45bytes) + NOP + i(4bytes) + len(4bytes). When the program hit hk_string[270] which is Ò\x00Ó, it will stop using attacker-string, but the stack pointer still keep growing with env variable. Finally, env variable overwrite the return address.
+
+3, target3
+   problem: In the bar function, The statement, targ[i] = arg[i], will overwrite the return address, when i is from 68 to 71.
+   solution: attacker-string is: SHELLCODE(45bytes) + NOP + return address(4bytes). The trick is that buff pointer will start from buf[4] because of targ += strlen(targ). As a result, the attacker-string[i] matches buf[i+4]. Finally, attack-string will overwrite the last four bytes(return address).
+
+4, target4
+   problem: In the foo function, The statement, *b++ = *a++;, will overwrite the return address, when i is from 184 to 188.
+   solution: attacker-string is: SHELLCODE(45bytes) + NOP + len. Attacker-string can only overwrite length in foo function, then stack pointer will hit return address. In addition,  we can use env[1] and env[3] variables to overwrite both i and return address at the same time.
+
+   Difference between target2 and target4: target2 uses attacker-string to overwrite both len and i, then it uses env varible to overwrite return address. because target2 can assess the index first in stack, then it can control which part of stack can be overwrite. 
+
