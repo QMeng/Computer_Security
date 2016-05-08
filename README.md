@@ -1,3 +1,8 @@
+<h4>The code in this repository are my solutions for ECE568 labs at the University of Toronto. Please do not use it for your own course work, thank you. This is grad level ECE course, there are 3 assignments for reading security research papers</h4> 
+<h4>Feel Free to email me for any mistakes in the repo or if you have any questions about software security.
+<a href="mailto:chuanrui.li@mail.utoronto.ca?Subject=CSC343" target="_top">Send me a mail</a></h4> 
+
+
 # Computer_Security
 ECE568
 - Buffer Overflow, Format String and Double Free Vulnerabilities
