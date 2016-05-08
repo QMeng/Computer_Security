@@ -1,0 +1,10 @@
+Part8:
+First try: 101 AND ((SELECT pin FROM pins WHERE cc_number='1111222233334444') < 10000 );
+Answer: 2364
+
+Explanation:
+We initialize the possible range (0, 10000)for the pin number. Then we use the binary search to define the final value. For example, if the pin is less 100000, which is true, the next search range is (0, 5000), so on and so forth. At the end, we find the value is 2364.
+
+
+
+

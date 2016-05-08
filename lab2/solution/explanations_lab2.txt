@@ -1,0 +1,21 @@
+#Chuanrui Li, 1000010846, chuanrui.li@mail.utoronto.ca
+#Jing Wang, 1002093183, jimmmy.wang@mail.utoronto.ca
+
+
+We build the TCP-based network application using the SSL to create secure channel.
+
+1, For client side, we need to have port number, host_name and address_space to create a bio-connected socket between client and server. Then we specify the key, cipher_list and options for SSL context. Finally, we bound SSL and sock together. Before sending the message to server side, the client will check the server's commonName, emailAddress and certificate. If everything is correct, the client starts the communication with server including read and write actions. Finally, there are some errors occurred during the communication, we need to detect them.
+
+2, Server side and client side are similar. The server side will keep listening the request from client side. If the server accept the SSL connection, it will fork a child process to deal with the request. The rest of design for server side is same as client side.
+
+
+3, the order in which they occur in the SSL protocol 
+1, Client and Server agree on a Cipher Suite
+2, Server sends its certificate.
+3, Client sends its certificate.
+4, Client and Server compute master secret.
+
+
+
+
+
